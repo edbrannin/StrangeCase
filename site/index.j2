@@ -1,0 +1,9 @@
+---
+title: My first StrangeCase site
+---
+{% extends "layouts/base.j2" %}
+{% block content %}
+<h1>{{ title }}</h1>
+<p><a href="{{ site.projects.url }}">Projects</a></p>
+<p>My favorite project: <a href="{{ site.projects.second_project.url }}">My second project</a></p>
+{% endblock %}
