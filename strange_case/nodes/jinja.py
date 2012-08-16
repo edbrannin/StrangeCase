@@ -1,3 +1,4 @@
+import os
 from strange_case.nodes import PageNode
 from strange_case.registry import Registry
 from strange_case.support.jinja import fix_path
@@ -18,7 +19,7 @@ class JinjaNode(PageNode):
     def render(self, site=None):
         #print "self.source_path is '{}', fixed to '{}'".format(self.source_path, fix_path(self.source_path))
         try:
-            template = Registry.get('jinja_environment').get_template(fix_path(self.source_path))
+            template = Registry.get('jinja_environment').get_template(fix_path(os.path.relpath(self.source_path)))
         except UnicodeDecodeError as e:
             e.args += "Could not process '%s' because of unicode error." % self.source_path
             raise
